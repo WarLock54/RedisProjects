@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RedisWithTool;
+using RedisWithTool.Models;
+using ServiceStack.Redis;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +15,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
 // redis connection config 
+builder.Services.AddSingleton<LocationService>();
 builder.Services.AddSingleton<IConnectionMultiplexer>(opt =>
 {
     var redisUrl = builder.Configuration.GetConnectionString("Redis");
     return ConnectionMultiplexer.Connect(redisUrl);
 });
+builder.Services.AddSingleton<IRedisClientsManager>(c =>
+      new RedisManagerPool("localhost:6379"));
 
 builder.Services.AddDbContext<StoreContext>(options =>
 {

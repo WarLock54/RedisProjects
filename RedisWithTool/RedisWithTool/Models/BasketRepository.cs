@@ -1,7 +1,7 @@
 ﻿using StackExchange.Redis;
 using System.Text.Json;
 
-namespace RedisWithTool
+namespace RedisWithTool.Models
 {
     public class BasketRepository : IBasketRepository
     {

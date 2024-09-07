@@ -12,8 +12,7 @@ namespace RedisWithTool.Controllers
         {
             _basketRepository = basketRepository;
         }
-
-        [HttpGet("{id}")]
+            [HttpGet("{id}")]
         public async Task<ActionResult<UserBasket>> GetBasket(string id)
         {
             // if the basket not found create new Basket and return it 

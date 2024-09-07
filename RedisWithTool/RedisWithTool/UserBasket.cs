@@ -1,4 +1,6 @@
-﻿namespace RedisWithTool
+﻿using RedisWithTool.Models;
+
+namespace RedisWithTool
 {
     public class UserBasket
     {
